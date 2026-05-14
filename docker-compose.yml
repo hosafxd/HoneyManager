@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  cowrie:
+    build:
+      context: ./honeypots/cowrie
+      dockerfile: Dockerfile
+    image: honeymanager/cowrie:latest
+    container_name: honey_cowrie
+    hostname: openwrt-router
+    restart: unless-stopped
+    networks:
+      macvlan_honeynet:
+        ipv4_address: 192.168.99.215
+    volumes:
+      - ${LOG_PATH:-./data/logs}/cowrie:/cowrie/var/log/cowrie
+    labels:
+      - "honeymanager.role=router"
+      - "honeymanager.type=cowrie"
+      - "honeymanager.ports=22,23"
+
+  web-camera:
+    build:
+      context: ./honeypots/web-camera
+      dockerfile: Dockerfile
+    container_name: honey_webcam
+    hostname: hikvision-cam
+    restart: unless-stopped
+    networks:
+      macvlan_honeynet:
+        ipv4_address: 192.168.99.216
+    volumes:
+      - ${LOG_PATH:-./data/logs}/web-camera:/var/log/honeypot
+    labels:
+      - "honeymanager.role=camera"
+      - "honeymanager.type=web-camera"
+      - "honeymanager.ports=80"
+
+
+  dionaea:
+    image: dinotools/dionaea:latest
+    container_name: honey_dionaea
+    hostname: nas-storage
+    restart: unless-stopped
+    networks:
+      macvlan_honeynet:
+        ipv4_address: 192.168.99.217
+    volumes:
+      - ${LOG_PATH:-./data/logs}/dionaea:/opt/dionaea/var/log
+      - ${DIONAEA_BINARIES_PATH:-./data/dionaea-binaries}:/opt/dionaea/var/lib/dionaea/binaries
+      - ./honeypots/dionaea/dionaea.cfg:/opt/dionaea/etc/dionaea/dionaea.cfg:ro
+    labels:
+      - "honeymanager.role=nas"
+      - "honeymanager.type=dionaea"
+      - "honeymanager.ports=21,445"
+
+
+  custom-iot:
+    image: onurmaden/iothoneypot:latest
+    container_name: honey_custom_iot
+    hostname: iot-device
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "-c", "/start.sh"]
+    networks:
+      macvlan_honeynet:
+        ipv4_address: 192.168.99.218
+    volumes:
+      - ${LOG_PATH:-./data/logs}/custom-iot:/var/log
+    labels:
+      - "honeymanager.role=iot"
+      - "honeymanager.type=custom-iot"
+      - "honeymanager.ports=22,21,23"
+
+networks:
+  macvlan_honeynet:
+    external: true

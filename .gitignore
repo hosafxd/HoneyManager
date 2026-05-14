@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.pytest_cache/
+
+# Environment variables
+.env
+
+# Data and Logs
+data/
+*.log
+*.sqlite
+*.db
+
+# Docker
+docker-compose.override.yml
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store

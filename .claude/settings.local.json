@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ip link *)",
+      "Bash(awk '{print $2}')",
+      "Bash(docker network ls *)",
+      "Bash(sudo docker *)",
+      "Bash(sqlite3 \"/home/hosafxd/Downloads/DÖNEM6/GRADUATION/HoneyManager \\(4\\)/HoneyManager/data/db/alerts.db\" \"SELECT id, username, role FROM users;\")",
+      "Bash(sqlite3 *)",
+      "Bash(chmod +x \"/home/hosafxd/Downloads/DÖNEM6/GRADUATION/HoneyManager \\(4\\)/HoneyManager/demo_attack.sh\")",
+      "Bash(python3 -c \"from datetime import datetime; print\\('Python now:', datetime.now\\(\\)\\)\")"
+    ]
+  }
+}

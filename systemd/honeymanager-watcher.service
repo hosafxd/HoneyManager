@@ -1,0 +1,18 @@
+[Unit]
+Description=HoneyManager Log Watcher
+After=network.target docker.service honeymanager-api.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/honeymanager/backend
+Environment="PATH=/root/honeymanager/venv/bin"
+ExecStart=/root/honeymanager/venv/bin/python watcher.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
