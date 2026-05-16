@@ -1,0 +1,44 @@
+# Telegram Bot Configuration
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=-
+
+# Network Configuration (existing macvlan)
+MACVLAN_NETWORK=macvlan_honeynet
+SUBNET=192.168.99.0/24
+GATEWAY=192.168.99.1 
+
+# Flask Configuration
+FLASK_SECRET_KEY=really_secret_key
+FLASK_HOST=0.0.0.0
+FLASK_PORT=5000
+FLASK_DEBUG=false
+
+# Log Configuration
+LOG_RETENTION_DAYS=30
+LOG_PATH=
+DB_PATH=
+
+# Honeypot Default IPs (test range)
+                                                                                                                       
+COWRIE_IP=192.168.99.215
+WEBCAM_IP=192.168.99.216
+DIONAEA_IP=192.168.99.217
+CUSTOM_IOT_IP=192.168.99.218
+
+# Whitelist IPs (comma-separated) 
+WHITELIST_IPS=
+
+# Google Gemini API Key
+GEMINI_API_KEY=
+
+# DeepSeek API Key (fallback command classifier)
+DEEPSEEK_API_KEY=
+
+# VirusTotal API Key (free tier: 500 requests/day)
+VIRUSTOTAL_API_KEY=
+
+# Dionaea binary capture path (host side of the Docker volume mount)
+DIONAEA_BINARIES_PATH=
+
+# Admin Configuration
+ADMIN_PASSWORD=1357
