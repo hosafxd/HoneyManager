@@ -1,3 +1,6 @@
+#Rename the file as ".env"
+
+
 # Telegram Bot Configuration
 TELEGRAM_BOT_TOKEN=
 TELEGRAM_CHAT_ID=-
