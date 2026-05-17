@@ -137,10 +137,10 @@ You need to update **2 files** with your own paths before running anything.
 ### 3a. Open the project folder
 
 ```bash
-cd ~/HoneyManagerFUTUREWORK
+cd ~/HoneyManager
 ```
 
-(Replace `~/HoneyManagerFUTUREWORK` with your actual path if different.)
+(Replace `~/HoneyManager` with your actual path if different.)
 
 ### 3b. Edit `.env`
 
@@ -185,12 +185,12 @@ ADMIN_PASSWORD=1357
 
 | Line | Replace with |
 |------|-------------|
-| `LOG_PATH=` | `LOG_PATH=/home/YOUR_USERNAME/HoneyManagerFUTUREWORK/data/logs` |
-| `DB_PATH=` | `DB_PATH=/home/YOUR_USERNAME/HoneyManagerFUTUREWORK/data/db/alerts.db` |
-| `DIONAEA_BINARIES_PATH=` | `DIONAEA_BINARIES_PATH=/home/YOUR_USERNAME/HoneyManagerFUTUREWORK/data/dionaea-binaries` |
+| `LOG_PATH=` | `LOG_PATH=/home/YOUR_USERNAME/HoneyManager/data/logs` |
+| `DB_PATH=` | `DB_PATH=/home/YOUR_USERNAME/HoneyManager/data/db/alerts.db` |
+| `DIONAEA_BINARIES_PATH=` | `DIONAEA_BINARIES_PATH=/home/YOUR_USERNAME/HoneyManager/data/dionaea-binaries` |
 
 > **How to find YOUR_USERNAME:** run `whoami` in the terminal.  
-> Example: if `whoami` prints `alice`, your paths become `/home/alice/HoneyManagerFUTUREWORK/data/logs`
+> Example: if `whoami` prints `alice`, your paths become `/home/alice/HoneyManager/data/logs`
 
 **Optional settings** (the project works without these, but they enable extra features):
 
@@ -218,14 +218,14 @@ Find line 9 (near the top of the file):
 BASE="/home/hosafxd/Downloads/DÖNEM6/GRADUATION/HoneyManager (4)/HoneyManager"
 ```
 
-Change it to your `HoneyManagerFUTUREWORK` folder path:
+Change it to your `HoneyManager` folder path:
 ```bash
-BASE="/home/YOUR_USERNAME/HoneyManagerFUTUREWORK"
+BASE="/home/YOUR_USERNAME/HoneyManager"
 ```
 
 Example (if your username is `alice`):
 ```bash
-BASE="/home/alice/HoneyManagerFUTUREWORK"
+BASE="/home/alice/HoneyManager"
 ```
 
 Save and close (`Ctrl+O`, `Enter`, `Ctrl+X`).
@@ -237,7 +237,7 @@ Save and close (`Ctrl+O`, `Enter`, `Ctrl+X`).
 Make sure you are inside the project folder:
 
 ```bash
-cd ~/HoneyManagerFUTUREWORK
+cd ~/HoneyManager
 ```
 
 Create the virtual environment:
@@ -284,7 +284,7 @@ If you see a table header (even empty), Docker is running correctly.
 ### 5b. Go to the project folder
 
 ```bash
-cd ~/HoneyManagerFUTUREWORK
+cd ~/HoneyManager
 ```
 
 ### 5c. Create necessary data directories
@@ -335,7 +335,7 @@ You need two terminal windows open at the same time.
 ### Terminal 1 — Flask API
 
 ```bash
-cd ~/HoneyManagerFUTUREWORK
+cd ~/HoneyManager
 source venv/bin/activate
 python3 backend/app.py
 ```
@@ -353,7 +353,7 @@ Leave this terminal open and running.
 Open a **new** terminal window/tab, then:
 
 ```bash
-cd ~/HoneyManagerFUTUREWORK
+cd ~/HoneyManager
 source venv/bin/activate
 python3 backend/watcher.py
 ```
@@ -394,7 +394,7 @@ The demo script simulates 50 real attack phases across all 4 honeypots, triggeri
 Open a **third** terminal window:
 
 ```bash
-cd ~/HoneyManagerFUTUREWORK
+cd ~/HoneyManager
 bash demo_attack.sh
 ```
 
@@ -471,7 +471,7 @@ When you are done:
 3. Stop the Docker containers:
 
 ```bash
-cd ~/HoneyManagerFUTUREWORK
+cd ~/HoneyManager
 docker compose down
 ```
 
@@ -482,7 +482,7 @@ docker compose down
 | What | Command |
 |------|---------|
 | Start Docker | `sudo systemctl start docker` |
-| Start honeypots | `cd ~/HoneyManagerFUTUREWORK && docker compose up -d` |
+| Start honeypots | `cd ~/HoneyManager && docker compose up -d` |
 | Activate venv | `source venv/bin/activate` |
 | Start API | `python3 backend/app.py` |
 | Start Watcher | `python3 backend/watcher.py` |
